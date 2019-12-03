@@ -24,6 +24,7 @@ namespace AdventOfCode
       dispatcher.Invoke(() =>
       { 
         TaskCount = taskCount;
+        if (TaskCount == 0) return;
         sw.Reset();
         sw.Start();
         t.Elapsed += T_Elapsed;
