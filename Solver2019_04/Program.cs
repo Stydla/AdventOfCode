@@ -87,17 +87,9 @@ namespace Solver2019_04
 
     private bool AdjacentCheck2(string strNumber)
     {
-
       var groups = strNumber.GroupBy(x => x);
-      if(groups.Any(x=>x.Count() == 2)) 
-      {
-        return true;
-      }
-      return false;
-      
+      return groups.Any(x=>x.Count() == 2);
     }
-
-
 
     private Input LoadData()
     {
