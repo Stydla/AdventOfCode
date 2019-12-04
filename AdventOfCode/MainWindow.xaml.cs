@@ -95,7 +95,7 @@ namespace AdventOfCode
       }
       catch (NotImplementedException)
       {
-        rv.Value = "Task 1 not Implemented";
+        rv.Value = "Task not Implemented";
         tm.Unregister(rv);
       }
       catch (Exception ex)
