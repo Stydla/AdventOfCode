@@ -84,14 +84,16 @@ namespace Solver2019_07
         int currentCpu = 0;
         while (true)
         {
+
           processors[currentCpu].Run();
           processors[(currentCpu + 1) % 5].Input.Add(processors[currentCpu].Output.Value);
-
-          if(lastConfig == 4 && processors[currentCpu].Halted == false)
+          if(currentCpu == 4 && processors[currentCpu].Halted == false)
           {
             break;
+          } else
+          {
+            currentCpu = (currentCpu + 1) % 5;
           }
-          currentCpu = (currentCpu + 1) % 5;
         }
 
         if (processors[4].Output.Value > maxThrust)
