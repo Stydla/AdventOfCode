@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solver2019_05.Instructions
+namespace IntCodeCpu.Instructions
 {
   public abstract class BaseInstruction
   {
     public abstract int OpCode { get; }
     public abstract int ParamCount { get; }
-    public abstract void Execute(Processor proc, Input input, Output output, InstructionParams instructParams);
+    public abstract eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams);
     public virtual InstructionParams Parse(List<int> programData, int pos)
     {
       InstructionParams ip = new InstructionParams();
@@ -50,5 +50,11 @@ namespace Solver2019_05.Instructions
         proc.ProgramData[proc.InstructionPointer + 1 + index] = value;
       }
     }
+  }
+
+  public enum eProcState
+  {
+    Halt,
+    Continue
   }
 }

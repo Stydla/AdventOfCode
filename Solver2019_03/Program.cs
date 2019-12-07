@@ -16,9 +16,9 @@ namespace Solver2019_03
 
     public override string SolverName => "Day 3: Crossed Wires";
 
-    public override string SolveTask1()
+    public override string SolveTask1(string inputData)
     {
-      Wires w = LoadData();
+      Wires w = LoadData(inputData);
       var res = w.Wire1.CoordPath.Intersect(w.Wire2.CoordPath, new CoordComparer());
 
       int distance = int.MaxValue;
@@ -40,9 +40,9 @@ namespace Solver2019_03
       return Math.Abs(c1.X - c2.X) + Math.Abs(c1.Y - c2.Y);
     }
 
-    public override string SolveTask2()
+    public override string SolveTask2(string inputData)
     {
-      Wires w = LoadData();
+      Wires w = LoadData(inputData);
       var res = w.Wire1.CoordPath.Intersect(w.Wire2.CoordPath, new CoordComparer()).ToList();
       
 
@@ -69,9 +69,9 @@ namespace Solver2019_03
       return startCoord.StepNr + coord.StepNr;
     }
 
-    private Wires LoadData()
+    private Wires LoadData(string inputData)
     {
-      using (StreamReader sr = new StreamReader(Filename))
+      using (StringReader sr = new StringReader(inputData))
       {
         return new Wires()
         {

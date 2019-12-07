@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solver2019_05
+namespace IntCodeCpu
 {
-  public class Input
+  public class Output
   {
     public int Value { get; set; }
   }

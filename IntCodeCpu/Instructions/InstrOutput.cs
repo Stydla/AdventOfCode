@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solver2019_05.Instructions
+namespace IntCodeCpu.Instructions
 {
   public class InstrOutput : BaseInstruction
   {
@@ -12,10 +12,11 @@ namespace Solver2019_05.Instructions
 
     public override int ParamCount => 1;
 
-    public override void Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
+    public override eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
     {
       output.Value = GetParam(0, proc, instructParams);
       proc.InstructionPointer += 2;
+      return eProcState.Continue;
     }
   }
 }

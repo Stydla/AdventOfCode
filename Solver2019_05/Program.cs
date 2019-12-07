@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using IntCodeCpu;
+using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,40 +17,26 @@ namespace Solver2019_05
 
     public override string SolverName => "Day 5: Sunny with a Chance of Asteroids";
 
-    public override string SolveTask1()
+    public override string SolveTask1(string inputData)
     {
-      Input input = new Input() { Value = 1 };
-      Output output = new Output();
-
-      List<int> programData = LoadData();
-      Processor processor = new Processor(programData, input, output);
+      
+      Processor processor = new Processor(inputData);
+      processor.Input.Add(1);
       
       processor.Run();
 
-      return output.Value.ToString();
+      return processor.Output.Value.ToString();
     }
 
-    public override string SolveTask2()
+    public override string SolveTask2(string inputData)
     {
-      Input input = new Input() { Value = 5 };
-      Output output = new Output();
-
-      List<int> programData = LoadData();
-      Processor processor = new Processor(programData, input, output);
+      Processor processor = new Processor(inputData);
+      processor.Input.Add(5);
 
       processor.Run();
 
-      return output.Value.ToString();
+      return processor.Output.Value.ToString();
     }
 
-    private List<int> LoadData()
-    {
-      using(StreamReader sr = new StreamReader(Filename))
-      {
-        string line = sr.ReadLine();
-        string[] items = line.Split(',');
-        return new List<int>(items.Select(x => int.Parse(x)));
-      }
-    }
   }
 }

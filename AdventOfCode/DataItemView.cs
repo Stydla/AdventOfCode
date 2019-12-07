@@ -52,6 +52,33 @@ namespace AdventOfCode
       }
     }
 
+    private ResultView _ResultTest1 = new ResultView();
+    public ResultView ResultTest1
+    {
+      get
+      {
+        return _ResultTest1;
+      }
+      set
+      {
+        _ResultTest1 = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ResultTest1)));
+      }
+    }
+
+    private ResultView _ResultTest2 = new ResultView();
+    public ResultView ResultTest2
+    {
+      get
+      {
+        return _ResultTest2;
+      }
+      set
+      {
+        _ResultTest2 = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ResultTest2)));
+      }
+    }
   }
 
   public class ResultView : INotifyPropertyChanged

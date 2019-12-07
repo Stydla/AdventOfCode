@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{575FE657-90B8-4826-A6C4-D8C5D11A5CF5}</ProjectGuid>
+    <ProjectGuid>{DA5E9E21-48C5-46F9-9362-4302DAB906A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Solver2019_05</RootNamespace>
-    <AssemblyName>Solver2019_05</AssemblyName>
+    <RootNamespace>IntCodeCpu</RootNamespace>
+    <AssemblyName>IntCodeCpu</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Solvers\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,18 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Input.cs" />
+    <Compile Include="Instructions\BaseInstruction.cs" />
+    <Compile Include="Instructions\InstrAdd.cs" />
+    <Compile Include="Instructions\InstrEquals.cs" />
+    <Compile Include="Instructions\InstrInput.cs" />
+    <Compile Include="Instructions\InstrJumpIfFalse.cs" />
+    <Compile Include="Instructions\InstrJumpIfTrue.cs" />
+    <Compile Include="Instructions\InstrLessThen.cs" />
+    <Compile Include="Instructions\InstrMultiply.cs" />
+    <Compile Include="Instructions\InstrOutput.cs" />
+    <Compile Include="Instructions\InstructionParams.cs" />
+    <Compile Include="Output.cs" />
+    <Compile Include="Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IntCodeCpu\IntCodeCpu.csproj">
-      <Project>{da5e9e21-48c5-46f9-9362-4302dab906a7}</Project>
-      <Name>IntCodeCpu</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{8E871211-7987-4960-81C6-25538DFDCA91}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

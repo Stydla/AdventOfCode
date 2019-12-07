@@ -19,15 +19,16 @@ namespace Solver2019_01
     {
     }
 
-    public override string SolveTask1()
+    public override string SolveTask1(string inputData)
     {
       int total = 0;
-      using (StreamReader sr = new StreamReader(Filename))
-      {
 
-        while (!sr.EndOfStream)
+      using (StringReader sr = new StringReader(inputData))
+      {
+        string line;
+        while ((line = sr.ReadLine()) != null)
         {
-          string line = sr.ReadLine();
+          
           int mass = int.Parse(line);
 
           total += CalculateFuel(mass);
@@ -37,16 +38,15 @@ namespace Solver2019_01
       return total.ToString();
     }
 
-    public override string SolveTask2()
+    public override string SolveTask2(string inputData)
     {
       int total = 0;
 
-      using (StreamReader sr = new StreamReader(Filename))
+      using (StringReader sr = new StringReader(inputData))
       {
-
-        while (!sr.EndOfStream)
+        string line;
+        while ((line = sr.ReadLine()) != null)
         {
-          string line = sr.ReadLine();
           int mass = int.Parse(line);
 
           total += CalculateTotalFuel(mass);

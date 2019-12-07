@@ -4,26 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solver2019_05.Instructions
+namespace IntCodeCpu.Instructions
 {
-  public class InstrLessThen : BaseInstruction
+  public class InstrEquals : BaseInstruction
   {
-    public override int OpCode => 7;
+    public override int OpCode => 8;
 
     public override int ParamCount => 3;
 
-    public override void Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
+    public override eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
     {
       int value1 = GetParam(0, proc, instructParams);
       int value2 = GetParam(1, proc, instructParams);
-      if (value1 < value2)
+
+      if (value1 == value2)
       {
         SetParam(2, 1, proc, instructParams);
       } else
       {
         SetParam(2, 0, proc, instructParams);
       }
-      proc.InstructionPointer += 4; 
+      proc.InstructionPointer += 4;
+      return eProcState.Continue;
     }
   }
 }

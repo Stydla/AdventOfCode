@@ -29,9 +29,9 @@ namespace AdventOfCode
 
       Data d = new Data();
 
-      foreach (IAdventSolver adventSolver in  d.Solvers)
+      foreach (IAdventSolver adventSolver in d.Solvers)
       {
-        d.Results.Add(new DataItemView() { TaskName = adventSolver.SolverName});
+        d.Results.Add(new DataItemView() { TaskName = adventSolver.SolverName });
       }
 
       DataContext = d;
@@ -45,12 +45,14 @@ namespace AdventOfCode
       Data d = (Data)DataContext;
       Task.Factory.StartNew(() =>
       {
-        TimeMeasure tm = new TimeMeasure(Dispatcher, d.Solvers.Count() * 2);
-        
+        TimeMeasure tm = new TimeMeasure(Dispatcher, d.Solvers.Count() * 4);
+
         Parallel.ForEach(d.Solvers, adventSolver =>
         {
           SolveTask1(adventSolver, d, tm);
           SolveTask2(adventSolver, d, tm);
+          StartTests1(adventSolver, d, tm);
+          StartTests2(adventSolver, d, tm);
         });
       });
     }
@@ -62,7 +64,7 @@ namespace AdventOfCode
         var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
         if (result != null)
         {
-          StartSolver(adventSolver.SolveTask1, result.Result1, tm);
+          StartSolver(adventSolver.SolveTask1, adventSolver.InputData, result.Result1, tm);
         }
       });
     }
@@ -74,18 +76,75 @@ namespace AdventOfCode
         var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
         if (result != null)
         {
-          StartSolver(adventSolver.SolveTask2, result.Result2, tm);
+          StartSolver(adventSolver.SolveTask2, adventSolver.InputData, result.Result2, tm);
         }
       });
     }
 
-    private void StartSolver(Func<string> task, ResultView rv, TimeMeasure tm)
+    private void StartTests1(IAdventSolver adventSolver, Data d, TimeMeasure tm)
+    {
+      Task.Factory.StartNew(() =>
+      {
+        var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
+        try
+        {
+          if (result != null)
+          {
+            tm.Register(result.ResultTest1);
+            result.ResultTest1.Value = string.Join("\n", adventSolver.RunTests1());
+            tm.Unregister(result.ResultTest1);
+            
+          }
+        }
+        catch (NotImplementedException)
+        {
+          result.ResultTest1.Value = "Task not Implemented";
+          tm.Unregister(result.ResultTest1);
+        }
+        catch (Exception ex)
+        {
+          result.ResultTest1.Value = ex.ToString();
+          tm.Unregister(result.ResultTest1);
+        }
+        tm.TaskFinished();
+      });
+    }
+
+    private void StartTests2(IAdventSolver adventSolver, Data d, TimeMeasure tm)
+    {
+      Task.Factory.StartNew(() =>
+      {
+        var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
+        try
+        {
+          if (result != null)
+          {
+            tm.Register(result.ResultTest2);
+            result.ResultTest2.Value = string.Join("\n", adventSolver.RunTests2());
+            tm.Unregister(result.ResultTest2);
+          }
+        }
+        catch (NotImplementedException)
+        {
+          result.ResultTest2.Value = "Task not Implemented";
+          tm.Unregister(result.ResultTest2);
+        }
+        catch (Exception ex)
+        {
+          result.ResultTest2.Value = ex.ToString();
+          tm.Unregister(result.ResultTest2);
+        }
+        tm.TaskFinished();
+      });
+    }
+
+    private void StartSolver(Func<string, string> task, string inputData, ResultView rv, TimeMeasure tm)
     {
       try
       {
         tm.Register(rv);
         rv.Value = "Running";
-        rv.Value = task();
+        rv.Value = task(inputData);
         tm.Unregister(rv);
 
         if (string.IsNullOrEmpty(rv.Value))
@@ -118,7 +177,7 @@ namespace AdventOfCode
       IAdventSolver solver = d.Solvers.Where(x => x.SolverName == div.TaskName).FirstOrDefault();
       TimeMeasure tm = new TimeMeasure(Dispatcher, 1);
       SolveTask1(solver, d, tm);
-      
+
     }
 
     private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -128,6 +187,17 @@ namespace AdventOfCode
       IAdventSolver solver = d.Solvers.Where(x => x.SolverName == div.TaskName).FirstOrDefault();
       TimeMeasure tm = new TimeMeasure(Dispatcher, 1);
       SolveTask2(solver, d, tm);
+    }
+
+    private void Button_Click_Test(object sender, RoutedEventArgs e)
+    {
+      DataItemView div = (sender as Button).DataContext as DataItemView;
+      Data d = DataContext as Data;
+      IAdventSolver solver = d.Solvers.Where(x => x.SolverName == div.TaskName).FirstOrDefault();
+      TimeMeasure tm = new TimeMeasure(Dispatcher, 2);
+
+      StartTests1(solver, d, tm);
+      StartTests2(solver, d, tm);
     }
   }
 }

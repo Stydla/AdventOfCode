@@ -16,9 +16,9 @@ namespace Solver2019_04
 
     public override string SolverName => "Day 4: Secure Container";
 
-    public override string SolveTask1()
+    public override string SolveTask1(string inputData)
     {
-      Input input = LoadData();
+      Input input = LoadData(inputData);
 
       int count = 0;
       for(int i = input.Number1; i <= input.Number2; i++)
@@ -31,9 +31,9 @@ namespace Solver2019_04
       return count.ToString();
     }
 
-    public override string SolveTask2()
+    public override string SolveTask2(string inputData)
     {
-      Input input = LoadData();
+      Input input = LoadData(inputData);
       
       int count = 0;
       for (int i = input.Number1; i <= input.Number2; i++)
@@ -91,9 +91,9 @@ namespace Solver2019_04
       return groups.Any(x=>x.Count() == 2);
     }
 
-    private Input LoadData()
+    private Input LoadData(string inputData)
     {
-      using (StreamReader sr = new StreamReader(Filename))
+      using (StringReader sr = new StringReader(inputData))
       {
         string line = sr.ReadLine();
         string [] parts = line.Split('-');

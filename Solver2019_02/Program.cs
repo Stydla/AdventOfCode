@@ -18,24 +18,24 @@ namespace Solver2019_02
 
     public override string SolverName => "Day 2: 1202 Program Alarm";
 
-    public override string SolveTask1()
+    public override string SolveTask1(string inputData)
     {
-      Solver solver = LoadData();
-      solver.Values[1] = 12;
-      solver.Values[2] = 2;
+      Solver solver = LoadData(inputData);
+      //solver.Values[1] = 12;
+      //solver.Values[2] = 2;
       while (solver.NextStep() != Result.Finished)
       {
       }
       return solver.Values[0].ToString();
     }
 
-    public override string SolveTask2()
+    public override string SolveTask2(string inputData)
     {
       for (int i = 0; i < 100; i++)
       {
         for(int j = 0; j < 100; j++)
         {
-          Solver solver = LoadData();
+          Solver solver = LoadData(inputData);
           solver.Values[1] = i;
           solver.Values[2] = j;
           while (solver.NextStep() != Result.Finished)
@@ -51,9 +51,9 @@ namespace Solver2019_02
       return "Not Found";
     }
 
-    private Solver LoadData()
+    private Solver LoadData(string inputData)
     {
-      using (StreamReader sr = new StreamReader(Filename))
+      using (StringReader sr = new StringReader(inputData))
       {
         string line = sr.ReadLine();
         var list = new List<string>(line.Split(',')).Select(x=>int.Parse(x)).ToList();

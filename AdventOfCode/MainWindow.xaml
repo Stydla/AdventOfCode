@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdventOfCode"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1300
+        Title="MainWindow" Height="450" Width="1600
         ">
   <Grid>
     <Grid.ColumnDefinitions>
@@ -26,7 +26,34 @@
                 <TextBlock Text="Solver Name"></TextBlock>
               </GridViewColumn.Header>
             </GridViewColumn>
-            <GridViewColumn Width="60" Header="Solve">
+            <GridViewColumn Width="60" Header="Test">
+              <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                  <Button Content="Test" Click="Button_Click_Test"/>
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="150">
+              <GridViewColumn.Header>
+                <TextBlock Text="Results 1"></TextBlock>
+              </GridViewColumn.Header>
+              <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                  <TextBox Text="{Binding ResultTest1.Value}"></TextBox>
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="150">
+              <GridViewColumn.Header>
+                <TextBlock Text="Results 2"></TextBlock>
+              </GridViewColumn.Header>
+              <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                  <TextBox Text="{Binding ResultTest2.Value}"></TextBox>
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="80" Header="Solve">
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
                   <Button Content="Solve" Click="Button_Click_1"/>
