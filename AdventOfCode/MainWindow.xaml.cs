@@ -64,7 +64,13 @@ namespace AdventOfCode
         var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
         if (result != null)
         {
-          StartSolver(adventSolver.SolveTask1, adventSolver.InputData, result.Result1, tm);
+          try
+          {
+            StartSolver(adventSolver.SolveTask1, adventSolver.InputData, result.Result1, tm);
+          } catch(Exception ex)
+          {
+            result.Result1.Value = ex.ToString();
+          }
         }
       });
     }
@@ -76,7 +82,14 @@ namespace AdventOfCode
         var result = d.Results.Where(x => x.TaskName == adventSolver.SolverName).FirstOrDefault();
         if (result != null)
         {
-          StartSolver(adventSolver.SolveTask2, adventSolver.InputData, result.Result2, tm);
+          try
+          {
+            StartSolver(adventSolver.SolveTask2, adventSolver.InputData, result.Result2, tm);
+          }
+          catch (Exception ex)
+          {
+            result.Result2.Value = ex.ToString();
+          }
         }
       });
     }

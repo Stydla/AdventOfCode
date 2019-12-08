@@ -21,7 +21,7 @@
       <ListView.View>
         <GridView>
           <GridView.Columns>
-            <GridViewColumn DisplayMemberBinding="{Binding TaskName}" Width="350">
+            <GridViewColumn DisplayMemberBinding="{Binding TaskName}" Width="300">
               <GridViewColumn.Header>
                 <TextBlock Text="Solver Name"></TextBlock>
               </GridViewColumn.Header>
@@ -60,7 +60,7 @@
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
-            <GridViewColumn Width="300">
+            <GridViewColumn Width="320">
               <GridViewColumn.Header>
                 <TextBlock Text="Result 1"></TextBlock>
               </GridViewColumn.Header>
@@ -84,7 +84,7 @@
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
-            <GridViewColumn Width="300">
+            <GridViewColumn Width="320">
               <GridViewColumn.Header>
                 <TextBlock  Text="Result 2"></TextBlock>
               </GridViewColumn.Header>
