@@ -11,10 +11,11 @@ namespace IntCodeCpu
   public class Processor
   {
     public int InstructionPointer;
-    public List<int> ProgramData;
+    public int RelativeBase;
+    public List<long> ProgramData;
     public Input Input = new Input();
     public Output Output = new Output();
-
+    
     public bool Halted { get; set; }
 
     private Dictionary<int, BaseInstruction> Instructions = new Dictionary<int, BaseInstruction>()
@@ -27,34 +28,41 @@ namespace IntCodeCpu
       { 6, new InstrJumpIfFalse() },
       { 7, new InstrLessThen() },
       { 8, new InstrEquals() },
+      { 9, new InstrRelativeBase() },
     };
 
     public Processor(string inputData)
     {
-      InstructionPointer = 0;
+      InstructionPointer = 0;      
       ProgramData = LoadData(inputData);
+      RelativeBase = 0;
+      for (int i = 0; i < 10000; i++)
+      {
+        ProgramData.Add(0);
+      }
+      
     }
 
-    public Processor(List<int> programData)
+    public Processor(List<long> programData)
     {
       InstructionPointer = 0;
       ProgramData = programData;
     }
 
-    private List<int> LoadData(string inputData)
+    private List<long> LoadData(string inputData)
     {
       using (StringReader sr = new StringReader(inputData))
       {
         string line = sr.ReadLine();
         string[] items = line.Split(',');
-        return new List<int>(items.Select(x => int.Parse(x)));
+        return new List<long>(items.Select(x => long.Parse(x)));
       }
     }
 
     public void Run()
     {
       Halted = false;
-      int opCode = GetOpCode(ProgramData[InstructionPointer]);
+      int opCode = GetOpCode((int)ProgramData[InstructionPointer]);
       while(opCode != 99)
       {
         if(!Instructions.ContainsKey(opCode))
@@ -70,7 +78,7 @@ namespace IntCodeCpu
           return;
         }
         
-        opCode = GetOpCode(ProgramData[InstructionPointer]);
+        opCode = GetOpCode((int)ProgramData[InstructionPointer]);
       }
 
     }

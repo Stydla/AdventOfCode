@@ -14,7 +14,8 @@ namespace IntCodeCpu.Instructions
 
     public override eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
     {
-      output.Value = GetParam(0, proc, instructParams);
+      long value1 = GetParam(0, proc, instructParams);
+      output.Add(value1);
       proc.InstructionPointer += 2;
       return eProcState.Continue;
     }

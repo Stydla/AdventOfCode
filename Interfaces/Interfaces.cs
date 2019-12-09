@@ -40,6 +40,10 @@ namespace Interfaces
     {
       get
       {
+        if (!File.Exists(Filename))
+        {
+          File.WriteAllText(Filename, "");
+        }
         return File.ReadAllText(Filename);
       }
     }

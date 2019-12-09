@@ -25,7 +25,7 @@ namespace Solver2019_05
       
       processor.Run();
 
-      return processor.Output.Value.ToString();
+      return processor.Output.GetNext().ToString();
     }
 
     public override string SolveTask2(string inputData)
@@ -35,7 +35,7 @@ namespace Solver2019_05
 
       processor.Run();
 
-      return processor.Output.Value.ToString();
+      return processor.Output.GetNext().ToString();
     }
 
   }

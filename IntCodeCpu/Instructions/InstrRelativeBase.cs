@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace IntCodeCpu.Instructions
 {
-  public class InstrAdd : BaseInstruction
+  public class InstrRelativeBase : BaseInstruction
   {
-    public override int OpCode => 1;
+    public override int OpCode => 9;
 
-    public override int ParamCount => 3;
+    public override int ParamCount => 1;
 
     public override eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams)
     {
       long value1 = GetParam(0, proc, instructParams);
-      long value2 = GetParam(1, proc, instructParams);
-      long res = value1 + value2;
-      SetParam(2, res, proc, instructParams);
-      proc.InstructionPointer += 4;
+      proc.RelativeBase = (int)proc.RelativeBase + (int)value1;
+      proc.InstructionPointer += 2;
       return eProcState.Continue;
     }
   }

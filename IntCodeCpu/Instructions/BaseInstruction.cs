@@ -11,7 +11,7 @@ namespace IntCodeCpu.Instructions
     public abstract int OpCode { get; }
     public abstract int ParamCount { get; }
     public abstract eProcState Execute(Processor proc, Input input, Output output, InstructionParams instructParams);
-    public virtual InstructionParams Parse(List<int> programData, int pos)
+    public virtual InstructionParams Parse(List<long> programData, int pos)
     {
       InstructionParams ip = new InstructionParams();
       ip.OpCode = programData[pos] % 100;
@@ -28,27 +28,39 @@ namespace IntCodeCpu.Instructions
       }
       return ip;
     }
-    protected int GetParam(int index, Processor proc, InstructionParams instructParams)
+    protected long GetParam(int index, Processor proc, InstructionParams instructParams)
     {
-      if (instructParams.ParamsMode[index] == 0)
+      int paramMode = instructParams.ParamsMode[index];
+      switch (paramMode)
       {
-        return proc.ProgramData[proc.ProgramData[proc.InstructionPointer + 1 + index]];
-      }
-      else
-      {
-        return proc.ProgramData[proc.InstructionPointer + 1 + index];
+        case 0:
+          return proc.ProgramData[(int)proc.ProgramData[(int)proc.InstructionPointer + 1 + index]];
+        case 1: 
+          return proc.ProgramData[(int)proc.InstructionPointer + 1 + index];
+        case 2:
+          return proc.ProgramData[(int)proc.RelativeBase + (int)instructParams.Values[index]];
+        default:
+          throw new Exception($"Invalid Param Mode: {paramMode}");
       }
     }
-    protected void SetParam(int index, int value, Processor proc, InstructionParams instructParams)
+    protected void SetParam(int index, long value, Processor proc, InstructionParams instructParams)
     {
-      if (instructParams.ParamsMode[index] == 0)
+      int paramMode = instructParams.ParamsMode[index];
+      switch (paramMode)
       {
-        proc.ProgramData[proc.ProgramData[proc.InstructionPointer + 1 + index]] = value;
+        case 0:
+          proc.ProgramData[(int)proc.ProgramData[(int)proc.InstructionPointer + 1 + index]] = value;
+          break;
+        case 1:
+          proc.ProgramData[(int)proc.InstructionPointer + 1 + index] = value;
+          break;
+        case 2:
+          proc.ProgramData[(int)proc.RelativeBase + (int)instructParams.Values[index]] = value;
+          break;
+        default:
+          throw new Exception($"Invalid Param Mode: {paramMode}");
       }
-      else
-      {
-        proc.ProgramData[proc.InstructionPointer + 1 + index] = value;
-      }
+
     }
   }
 

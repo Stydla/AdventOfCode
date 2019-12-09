@@ -20,27 +20,28 @@ namespace Solver2019_07
     {
       var configurations = GetConfigurations1();
 
-      int maxThrust = 0;
+      long maxThrust = 0;
 
       foreach(var config in configurations)
       {
         
         Output output = new Output();
-        output.Value = 0;
+        output.Add(0);
         foreach (int setting in config)
         {
           string data = inputData;
           Processor cpu = new Processor(data);
           cpu.Input.Add(setting);
-          cpu.Input.Add(output.Value);
+          cpu.Input.Add(output.GetNext());
           cpu.Run();
 
-          output.Value = cpu.Output.Value;
+          output.Add(cpu.Output.GetNext());
         }
 
-        if(output.Value > maxThrust)
+        long tmpVal = output.LastValue();
+        if (tmpVal > maxThrust)
         {
-          maxThrust = output.Value;
+          maxThrust = tmpVal;
         }
         
       }
@@ -65,7 +66,7 @@ namespace Solver2019_07
     {
       var configurations = GetConfigurations2();
 
-      int maxThrust = 0;
+      long maxThrust = 0;
 
       foreach (var configTmp in configurations)
       {
@@ -86,7 +87,7 @@ namespace Solver2019_07
         {
 
           processors[currentCpu].Run();
-          processors[(currentCpu + 1) % 5].Input.Add(processors[currentCpu].Output.Value);
+          processors[(currentCpu + 1) % 5].Input.Add(processors[currentCpu].Output.GetNext());
           if(currentCpu == 4 && processors[currentCpu].Halted == false)
           {
             break;
@@ -96,11 +97,12 @@ namespace Solver2019_07
           }
         }
 
-        if (processors[4].Output.Value > maxThrust)
+        long tmp = processors[4].Output.LastValue();
+        if (tmp > maxThrust)
         {
-          maxThrust = processors[4].Output.Value;
+          maxThrust = tmp;
         }
-
+        
       }
 
       return maxThrust.ToString();

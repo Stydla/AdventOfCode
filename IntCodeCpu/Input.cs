@@ -9,14 +9,14 @@ namespace IntCodeCpu
   public class Input
   {
 
-    private List<int> Values { get; } = new List<int>();
+    private List<long> Values { get; } = new List<long>();
     public int Pos { get; private set; }
     public Input()
     {
       Pos = 0;
     }
 
-    public int GetNext()
+    public long GetNext()
     {
       return Values[Pos++];
     }
@@ -26,7 +26,7 @@ namespace IntCodeCpu
       return Values.Count > Pos;
     }
 
-    public void Add(int value)
+    public void Add(long value)
     {
       Values.Add(value);
     }
