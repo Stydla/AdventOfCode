@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_08", "Solver2019
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_09", "Solver2019_09\Solver2019_09.csproj", "{54D53A9D-E4ED-45DF-BFD1-D2516414FE12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_10", "Solver2019_10\Solver2019_10.csproj", "{B787C5B6-060E-4580-9B01-DA3E9681A0B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{54D53A9D-E4ED-45DF-BFD1-D2516414FE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54D53A9D-E4ED-45DF-BFD1-D2516414FE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54D53A9D-E4ED-45DF-BFD1-D2516414FE12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B787C5B6-060E-4580-9B01-DA3E9681A0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B787C5B6-060E-4580-9B01-DA3E9681A0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B787C5B6-060E-4580-9B01-DA3E9681A0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B787C5B6-060E-4580-9B01-DA3E9681A0B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
