@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdventOfCode"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1600
+        Title="MainWindow" Height="1200" Width="2000
         ">
   <Grid>
     <Grid.ColumnDefinitions>
@@ -84,7 +84,7 @@
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
-            <GridViewColumn Width="320">
+            <GridViewColumn Width="500">
               <GridViewColumn.Header>
                 <TextBlock  Text="Result 2"></TextBlock>
               </GridViewColumn.Header>

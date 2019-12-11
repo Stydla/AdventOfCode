@@ -111,6 +111,9 @@
     <Content Include="Inputs\input10.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Inputs\input11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Inputs\input2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
