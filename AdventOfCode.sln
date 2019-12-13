@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_11", "Solver2019
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_12", "Solver2019_12\Solver2019_12.csproj", "{83F85451-6E3C-4E56-A47E-04965E0759AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_13", "Solver2019_13\Solver2019_13.csproj", "{2BFAEB55-5454-410B-A4C7-28F394D94F6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{83F85451-6E3C-4E56-A47E-04965E0759AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83F85451-6E3C-4E56-A47E-04965E0759AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83F85451-6E3C-4E56-A47E-04965E0759AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BFAEB55-5454-410B-A4C7-28F394D94F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BFAEB55-5454-410B-A4C7-28F394D94F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BFAEB55-5454-410B-A4C7-28F394D94F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BFAEB55-5454-410B-A4C7-28F394D94F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

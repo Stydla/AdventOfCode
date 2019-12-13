@@ -12,6 +12,7 @@ namespace IntCodeCpu
   {
     public int InstructionPointer;
     public int RelativeBase;
+    public int MemoryStart;
     public List<long> ProgramData;
     public Input Input = new Input();
     public Output Output = new Output();
@@ -36,6 +37,7 @@ namespace IntCodeCpu
       InstructionPointer = 0;      
       ProgramData = LoadData(inputData);
       RelativeBase = 0;
+      MemoryStart = ProgramData.Count;
       for (int i = 0; i < 10000; i++)
       {
         ProgramData.Add(0);
@@ -47,6 +49,11 @@ namespace IntCodeCpu
     {
       InstructionPointer = 0;
       ProgramData = programData;
+    }
+
+    public void ChangeProgramData(int address, int value)
+    {
+      ProgramData[address] = value;
     }
 
     private List<long> LoadData(string inputData)
