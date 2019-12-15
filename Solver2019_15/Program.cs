@@ -18,7 +18,7 @@ namespace Solver2019_15
     public override string SolveTask1(string InputData)
     {
       Robot r = new Robot(InputData);
-      r.SearchMap();
+      r.RevealMap();
 
       return r.GetOxygenPathCount().ToString();
     }
@@ -26,7 +26,7 @@ namespace Solver2019_15
     public override string SolveTask2(string InputData)
     {
       Robot r = new Robot(InputData);
-      r.SearchMap();
+      r.RevealMap();
 
       return r.MapPathFromOxygen().GetDepth().ToString();
     }

@@ -41,7 +41,7 @@ namespace Solver2019_15
     }
 
 
-    public void SearchMap()
+    public void RevealMap()
     {
       List<Field> unsearchedFields;
       while ((unsearchedFields = Map.GetUnsearchedFields()).Count > 0)
