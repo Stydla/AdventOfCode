@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_15", "Solver2019
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_16", "Solver2019_16\Solver2019_16.csproj", "{AB7EE75E-9ADC-480C-825D-43D78285D4FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_17", "Solver2019_17\Solver2019_17.csproj", "{6AF5D7DE-970B-4582-83A3-B20CE457C513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +203,14 @@ Global
 		{AB7EE75E-9ADC-480C-825D-43D78285D4FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB7EE75E-9ADC-480C-825D-43D78285D4FC}.Release|x64.ActiveCfg = Release|Any CPU
 		{AB7EE75E-9ADC-480C-825D-43D78285D4FC}.Release|x64.Build.0 = Release|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Debug|x64.Build.0 = Debug|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Release|x64.ActiveCfg = Release|Any CPU
+		{6AF5D7DE-970B-4582-83A3-B20CE457C513}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

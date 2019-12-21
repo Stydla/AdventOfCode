@@ -31,5 +31,10 @@ namespace IntCodeCpu
       Values.Add(value);
     }
 
+    public void AddRange(IEnumerable<long> values)
+    {
+      Values.AddRange(values);
+    }
+
   }
 }

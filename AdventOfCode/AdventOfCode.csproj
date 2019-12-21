@@ -151,6 +151,9 @@
     <Content Include="Inputs\input16.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Inputs\input17.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Inputs\input2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -465,6 +468,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Inputs\Test17\" />
     <Folder Include="Inputs\Test8\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
