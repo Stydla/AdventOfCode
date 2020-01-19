@@ -41,7 +41,7 @@ namespace Solver2019_17
       return $"{ID}";
     }
 
-    private Dictionary<Tuple<Point, eDirection>, CommandResult> CommandCache = new Dictionary<Tuple<Point, eDirection>, CommandResult>();
+    private Dictionary<Tuple<Point, eDirection>, CommandResult> CommandCache { get; set; } = new Dictionary<Tuple<Point, eDirection>, CommandResult>();
 
     public CommandResult CreateCommand(Point p, eDirection dir)
     {
