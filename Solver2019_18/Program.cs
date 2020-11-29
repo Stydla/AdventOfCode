@@ -17,7 +17,12 @@ namespace Solver2019_18
 
     public override string SolveTask1(string InputData)
     {
-      throw new NotImplementedException();
+
+      Map m = new Map(InputData);
+      System.Diagnostics.Debug.WriteLine(m.Print());
+     
+
+      return "";
     }
 
     public override string SolveTask2(string InputData)
