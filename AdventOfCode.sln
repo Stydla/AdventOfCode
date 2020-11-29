@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode", "AdventOfCode\AdventOfCode.csproj", "{EBB07FE7-14EF-48B0-8B9F-F26E1948E0A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E} = {D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{8E871211-7987-4960-81C6-25538DFDCA91}"
 EndProject
@@ -52,6 +55,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_21", "Solver2019_21\Solver2019_21.csproj", "{ACF2AA9A-A5F1-4698-8F62-67031EBB342F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solver2019_22", "Solver2019_22\Solver2019_22.csproj", "{C82090EF-D453-4342-BC80-81868E30D8BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inputs2019", "Inputs2019\Inputs2019.csproj", "{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -261,6 +266,14 @@ Global
 		{C82090EF-D453-4342-BC80-81868E30D8BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C82090EF-D453-4342-BC80-81868E30D8BC}.Release|x64.ActiveCfg = Release|Any CPU
 		{C82090EF-D453-4342-BC80-81868E30D8BC}.Release|x64.Build.0 = Release|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Debug|x64.Build.0 = Debug|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Release|x64.ActiveCfg = Release|Any CPU
+		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
