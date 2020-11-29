@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode", "AdventOfCode\AdventOfCode.csproj", "{EBB07FE7-14EF-48B0-8B9F-F26E1948E0A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D5C6479C-4F7F-4A25-962B-6ECCCA912E0E} = {D5C6479C-4F7F-4A25-962B-6ECCCA912E0E}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{8E871211-7987-4960-81C6-25538DFDCA91}"
 EndProject

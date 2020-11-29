@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Interfaces
@@ -13,7 +14,7 @@ namespace Interfaces
   [InheritedExport(typeof(IAdventSolver))]
   public interface IAdventSolver
   {
-
+    string InputsFolderName { get; }
     string InputData { get; }
     List<TestData> TestDataList1 { get; }
     List<TestData> TestDataList2 { get; }
@@ -31,6 +32,7 @@ namespace Interfaces
 
     private string Filename { get; set; }
     public abstract string SolverName { get; }
+    public abstract string InputsFolderName { get; }
 
     public int TaskNumber { get; }
 
@@ -55,7 +57,7 @@ namespace Interfaces
         List<TestData> ret = new List<TestData>();
         string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
         string dir = Path.GetDirectoryName(path);
-        path = Path.Combine(dir, "Inputs", $"Test{TaskNumber}");
+        path = Path.Combine(dir, "Solvers", InputsFolderName, $"Tests");
         if (!Directory.Exists(path))
         {
           Directory.CreateDirectory(path);
@@ -63,14 +65,21 @@ namespace Interfaces
         foreach(var file in Directory.GetFiles(path))
         {
           string tmpPath = Path.GetDirectoryName(file);
-          string filename = Path.GetFileNameWithoutExtension(file);
+          string filename = Path.GetFileName(file);
           if (filename.StartsWith("out"))
           {
+            var m = Regex.Match(filename, "out([0-9]*)_part1.txt");
+            if(m.Success)
+            {
+              int fileNumber = int.Parse(m.Groups[1].Value);
 
-            int fileNumber = int.Parse(filename.Substring(3));
-            string input = File.ReadAllText(Path.Combine(tmpPath, $"in{fileNumber}.txt"));
-            string output = File.ReadAllText(Path.Combine(tmpPath, $"out{fileNumber}.txt"));
-            ret.Add(new TestData(fileNumber, input, output));
+              string input = File.ReadAllText(Path.Combine(tmpPath, $"in{fileNumber}.txt"));
+              string output = File.ReadAllText(Path.Combine(tmpPath, $"out{fileNumber}_part1.txt"));
+              if (!(string.IsNullOrWhiteSpace(input) || string.IsNullOrWhiteSpace(output)))
+              {
+                ret.Add(new TestData(fileNumber, input, output));
+              }
+            }
           }
         }
         return ret;
@@ -84,7 +93,7 @@ namespace Interfaces
         List<TestData> ret = new List<TestData>();
         string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
         string dir = Path.GetDirectoryName(path);
-        path = Path.Combine(dir, "Inputs", $"Test{TaskNumber}");
+        path = Path.Combine(dir, "Solvers", InputsFolderName, $"Tests");
         if (!Directory.Exists(path))
         {
           Directory.CreateDirectory(path);
@@ -92,14 +101,21 @@ namespace Interfaces
         foreach (var file in Directory.GetFiles(path))
         {
           string tmpPath = Path.GetDirectoryName(file);
-          string filename = Path.GetFileNameWithoutExtension(file);
-          if (filename.StartsWith("sec"))
+          string filename = Path.GetFileName(file);
+          if (filename.StartsWith("out"))
           {
+            var m = Regex.Match(filename, "out([0-9]*)_part2.txt");
+            if (m.Success)
+            {
+              int fileNumber = int.Parse(m.Groups[1].Value);
 
-            int fileNumber = int.Parse(filename.Substring(3));
-            string input = File.ReadAllText(Path.Combine(tmpPath, $"in{fileNumber}.txt"));
-            string output = File.ReadAllText(Path.Combine(tmpPath, $"sec{fileNumber}.txt"));
-            ret.Add(new TestData(fileNumber, input, output));
+              string input = File.ReadAllText(Path.Combine(tmpPath, $"in{fileNumber}.txt"));
+              string output = File.ReadAllText(Path.Combine(tmpPath, $"out{fileNumber}_part2.txt"));
+              if (!(string.IsNullOrWhiteSpace(input) || string.IsNullOrWhiteSpace(output)))
+              {
+                ret.Add(new TestData(fileNumber, input, output));
+              }
+            }
           }
         }
         return ret;
@@ -162,12 +178,12 @@ namespace Interfaces
       Year = year;
       string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
       string dir = Path.GetDirectoryName(path);
-      path = Path.Combine(dir, "Inputs");
+      path = Path.Combine(dir, "Solvers", InputsFolderName);
       if (!Directory.Exists(path))
       {
         Directory.CreateDirectory(path);
       }
-      Filename = Path.Combine(path, $"input{taskNumber}.txt");
+      Filename = Path.Combine(path, $"input.txt");
     }
   }
 
