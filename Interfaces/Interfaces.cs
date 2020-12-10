@@ -19,12 +19,11 @@ namespace Interfaces
     List<TestData> TestDataList1 { get; }
     List<TestData> TestDataList2 { get; }
     string SolverName { get; }
-    int TaskNumber { get; }
-    int Year { get; }
     string SolveTask1(string InputData);
     string SolveTask2(string InputData);
     List<string> RunTests1();
     List<string> RunTests2();
+    int TaskNumber { get; }
   }
 
   public abstract class BaseAdventSolver : IAdventSolver
@@ -34,7 +33,16 @@ namespace Interfaces
     public abstract string SolverName { get; }
     public abstract string InputsFolderName { get; }
 
-    public int TaskNumber { get; }
+    public int TaskNumber
+    {
+      get
+      {
+        int taskNumber = -1;
+        string val = InputsFolderName.Substring(InputsFolderName.IndexOf("_") + 1);
+        int.TryParse(val, out taskNumber);
+        return taskNumber;
+      }
+    }
 
     public int Year { get; }
 
@@ -139,7 +147,7 @@ namespace Interfaces
         string result = SolveTask1(td.Input);
         if (td.Output == result)
         {
-          tmp.Add($"{td.TestNumber} - OK");
+          tmp.Add($"{td.TestNumber} - OK ({result})");
         }
         else
         {
@@ -162,7 +170,7 @@ namespace Interfaces
         string result = SolveTask2(td.Input);
         if (td.Output == result)
         {
-          tmp.Add($"{td.TestNumber} - OK");
+          tmp.Add($"{td.TestNumber} - OK ({result})");
         }
         else
         {
@@ -172,10 +180,8 @@ namespace Interfaces
       return tmp;
     }
     
-    public BaseAdventSolver(int year, int taskNumber)
+    public BaseAdventSolver()
     {
-      TaskNumber = taskNumber;
-      Year = year;
       string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
       string dir = Path.GetDirectoryName(path);
       path = Path.Combine(dir, "Solvers", InputsFolderName);
