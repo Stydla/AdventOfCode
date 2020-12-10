@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Windows.Threading;
 
 namespace AdventOfCode
 {
@@ -22,7 +21,7 @@ namespace AdventOfCode
       }
     }
 
-    
+
 
     private ResultView _Result1 = new ResultView();
     public ResultView Result1

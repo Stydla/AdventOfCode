@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdventOfCode"
         mc:Ignorable="d"
         Title="MainWindow" Height="1200" Width="2000
-        ">
+        " WindowStartupLocation="CenterScreen">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition></ColumnDefinition>

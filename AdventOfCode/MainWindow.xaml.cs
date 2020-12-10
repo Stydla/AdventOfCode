@@ -1,25 +1,12 @@
 ﻿using Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Data;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Web;
-using System.Net;
-using System.IO;
-using System.Net.Http;
-using System.Data;
 
 namespace AdventOfCode
 {
@@ -72,25 +59,25 @@ namespace AdventOfCode
         {
           html = reader.ReadToEnd();
         }
-       //object obj = JsonConvert.DeserializeObject(html);
+        //object obj = JsonConvert.DeserializeObject(html);
         //DataTable dt = Tabulate(html);
         //DataTable dt = (DataTable)JsonConvert.DeserializeObject(html, (typeof(DataTable)));
 
-        string json= "{\"id\":\"10\",\"name\":\"User\",\"add\":false,\"edit\":true,\"authorize\":true,\"view\":true}";
+        string json = "{\"id\":\"10\",\"name\":\"User\",\"add\":false,\"edit\":true,\"authorize\":true,\"view\":true}";
         //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
         //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json);
         //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(html);
 
         Console.WriteLine(html);
       }
-      catch(Exception ex)
+      catch (Exception ex)
       {
 
       }
-    
+
     }
 
-    
+
     private void SolveAll()
     {
       Data d = (Data)DataContext;
@@ -118,7 +105,8 @@ namespace AdventOfCode
           try
           {
             StartSolver(adventSolver.SolveTask1, adventSolver.InputData, result.Result1, tm);
-          } catch(Exception ex)
+          }
+          catch (Exception ex)
           {
             result.Result1.Value = ex.ToString();
           }
@@ -157,7 +145,7 @@ namespace AdventOfCode
             tm.Register(result.ResultTest1);
             result.ResultTest1.Value = string.Join("\n", adventSolver.RunTests1());
             tm.Unregister(result.ResultTest1);
-            
+
           }
         }
         catch (NotImplementedException)

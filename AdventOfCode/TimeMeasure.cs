@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Threading;
 
@@ -16,13 +12,13 @@ namespace AdventOfCode
     private Stopwatch sw = new Stopwatch();
     private Dispatcher dispatcher;
     private int TaskCount { get; set; }
-    
+
 
     public TimeMeasure(Dispatcher dispatcher, int taskCount)
     {
       this.dispatcher = dispatcher;
       dispatcher.Invoke(() =>
-      { 
+      {
         TaskCount = taskCount;
         if (TaskCount == 0) return;
         sw.Reset();
@@ -38,7 +34,7 @@ namespace AdventOfCode
       dispatcher.Invoke(() =>
       {
         TaskCount--;
-      if (TaskCount == 0)
+        if (TaskCount == 0)
         {
           Stop();
         }

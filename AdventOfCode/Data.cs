@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode
 {
@@ -27,7 +24,7 @@ namespace AdventOfCode
       string path = (new System.Uri(Assembly.GetExecutingAssembly().CodeBase)).AbsolutePath;
       string dir = Path.GetDirectoryName(path);
       path = Path.Combine(dir, "Solvers");
-      if (!Directory.Exists(path)) 
+      if (!Directory.Exists(path))
       {
         Directory.CreateDirectory(path);
       }
