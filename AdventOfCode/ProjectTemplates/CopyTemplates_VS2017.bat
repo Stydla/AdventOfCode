@@ -1,0 +1,7 @@
+copy AdventSolver2021.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2021.zip"
+copy AdventSolver2020.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2020.zip"
+copy AdventSolver2019.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2019.zip"
+copy AdventSolver2018.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2018.zip"
+copy AdventSolver2017.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2017.zip"
+copy AdventSolver2016.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2016.zip"
+copy AdventSolver2015.zip "%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates\AdventSolver2015.zip"
