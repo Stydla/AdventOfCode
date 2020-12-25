@@ -48,6 +48,7 @@ namespace AdventOfCode
         foreach (var item in ResultViewList)
         {
           item.Key.Time = $"{(sw.ElapsedMilliseconds - item.Value) / 1000.0}s";
+          //item.Key.Time = $"{sw.ElapsedTicks}s";
         }
       });
     }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Media;
 
 namespace AdventOfCode
 {
@@ -112,5 +113,50 @@ namespace AdventOfCode
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Time)));
       }
     }
+
+    private ERunningState _RunningState = ERunningState.NotStarted;
+    public ERunningState RunningState
+    {
+      get
+      {
+        return _RunningState;
+      }
+      set
+      {
+        _RunningState = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RunningState)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RunningColor)));
+      }
+    }
+   
+    public Brush RunningColor
+    {
+      get
+      {
+        switch (RunningState)
+        {
+          case ERunningState.NotStarted:
+            return Brushes.White;
+          case ERunningState.Running:
+            return Brushes.Yellow;
+          case ERunningState.Finished:
+            return Brushes.Green;
+          case ERunningState.Exception:
+            return Brushes.Red;
+          case ERunningState.NotImplemented:
+            return Brushes.Cyan;
+        }
+        return Brushes.Gray;
+      }
+    }
+  }
+
+  public enum ERunningState
+  {
+    NotStarted,
+    Running,
+    Finished,
+    Exception,
+    NotImplemented
   }
 }

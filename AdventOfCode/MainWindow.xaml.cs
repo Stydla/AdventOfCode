@@ -85,13 +85,21 @@ namespace AdventOfCode
       {
         TimeMeasure tm = new TimeMeasure(Dispatcher, d.Solvers.Count() * 4);
 
-        Parallel.ForEach(d.Solvers, adventSolver =>
+        foreach(IAdventSolver adventSolver in d.Solvers)
         {
           SolveTask1(adventSolver, d, tm);
           SolveTask2(adventSolver, d, tm);
           StartTests1(adventSolver, d, tm);
           StartTests2(adventSolver, d, tm);
-        });
+        }
+
+        //Parallel.ForEach(d.Solvers, adventSolver =>
+        //{
+        //  SolveTask1(adventSolver, d, tm);
+        //  SolveTask2(adventSolver, d, tm);
+        //  StartTests1(adventSolver, d, tm);
+        //  StartTests2(adventSolver, d, tm);
+        //});
       });
     }
 
@@ -109,6 +117,7 @@ namespace AdventOfCode
           catch (Exception ex)
           {
             result.Result1.Value = ex.ToString();
+            result.Result1.RunningState = ERunningState.Exception;
           }
         }
       });
@@ -128,6 +137,7 @@ namespace AdventOfCode
           catch (Exception ex)
           {
             result.Result2.Value = ex.ToString();
+            result.Result2.RunningState = ERunningState.Exception;
           }
         }
       });
@@ -196,6 +206,7 @@ namespace AdventOfCode
       {
         tm.Register(rv);
         rv.Value = "Running";
+        rv.RunningState = ERunningState.Running;
         rv.Value = task(inputData);
         tm.Unregister(rv);
 
@@ -203,16 +214,19 @@ namespace AdventOfCode
         {
           rv.Value = "No result";
         }
+        rv.RunningState = ERunningState.Finished;
       }
       catch (NotImplementedException)
       {
         rv.Value = "Task not Implemented";
         tm.Unregister(rv);
+        rv.RunningState = ERunningState.NotImplemented;
       }
       catch (Exception ex)
       {
         rv.Value = ex.ToString();
         tm.Unregister(rv);
+        rv.RunningState = ERunningState.Exception;
       }
       tm.TaskFinished();
     }

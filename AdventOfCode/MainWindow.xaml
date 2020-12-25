@@ -66,14 +66,14 @@
               </GridViewColumn.Header>
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
-                  <TextBox Text="{Binding Result1.Value}"></TextBox>
+                  <TextBox Text="{Binding Result1.Value}" ></TextBox>
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
             <GridViewColumn Width="60" Header="Time">
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
-                  <TextBlock Text="{Binding Result1.Time}"></TextBlock>
+                  <TextBlock Text="{Binding Result1.Time}" Background="{Binding Result1.RunningColor}"></TextBlock>
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
@@ -97,7 +97,7 @@
             <GridViewColumn Width="60" Header="Time">
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
-                  <TextBlock Text="{Binding Result2.Time}"></TextBlock>
+                  <TextBlock Text="{Binding Result2.Time}" Background="{Binding Result2.RunningColor}"></TextBlock>
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
