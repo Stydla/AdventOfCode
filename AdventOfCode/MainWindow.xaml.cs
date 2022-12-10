@@ -35,47 +35,47 @@ namespace AdventOfCode
 
     }
 
-    private void LoadJSON()
-    {
-      try
-      {
-        string html = string.Empty;
-        string url = @"https://adventofcode.com/2020/leaderboard/private/view/378346.json";
+    //private void LoadJSON()
+    //{
+    //  try
+    //  {
+    //    string html = string.Empty;
+    //    string url = @"https://adventofcode.com/2020/leaderboard/private/view/378346.json";
 
 
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-        request.AutomaticDecompression = DecompressionMethods.GZip;
+    //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+    //    request.AutomaticDecompression = DecompressionMethods.GZip;
 
-        CookieContainer cookies = new CookieContainer();
-        Cookie ck = new Cookie("session", "53616c7465645f5f631592ad09f3c650b4f60248f23957150c2bf3fb0246cf14f647a1f96c2295e6885c24b2d156d41c");
-        ck.Domain = ".adventofcode.com";
-        cookies.Add(ck);
-        request.CookieContainer = cookies;
+    //    CookieContainer cookies = new CookieContainer();
+    //    Cookie ck = new Cookie("session", "53616c7465645f5f631592ad09f3c650b4f60248f23957150c2bf3fb0246cf14f647a1f96c2295e6885c24b2d156d41c");
+    //    ck.Domain = ".adventofcode.com";
+    //    cookies.Add(ck);
+    //    request.CookieContainer = cookies;
 
 
-        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-        using (Stream stream = response.GetResponseStream())
-        using (StreamReader reader = new StreamReader(stream))
-        {
-          html = reader.ReadToEnd();
-        }
-        //object obj = JsonConvert.DeserializeObject(html);
-        //DataTable dt = Tabulate(html);
-        //DataTable dt = (DataTable)JsonConvert.DeserializeObject(html, (typeof(DataTable)));
+    //    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+    //    using (Stream stream = response.GetResponseStream())
+    //    using (StreamReader reader = new StreamReader(stream))
+    //    {
+    //      html = reader.ReadToEnd();
+    //    }
+    //    //object obj = JsonConvert.DeserializeObject(html);
+    //    //DataTable dt = Tabulate(html);
+    //    //DataTable dt = (DataTable)JsonConvert.DeserializeObject(html, (typeof(DataTable)));
 
-        string json = "{\"id\":\"10\",\"name\":\"User\",\"add\":false,\"edit\":true,\"authorize\":true,\"view\":true}";
-        //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
-        //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json);
-        //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(html);
+    //    string json = "{\"id\":\"10\",\"name\":\"User\",\"add\":false,\"edit\":true,\"authorize\":true,\"view\":true}";
+    //    //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
+    //    //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json);
+    //    //var oMycustomclassname = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(html);
 
-        Console.WriteLine(html);
-      }
-      catch (Exception ex)
-      {
+    //    Console.WriteLine(html);
+    //  }
+    //  catch (Exception ex)
+    //  {
 
-      }
+    //  }
 
-    }
+    //}
 
 
     private void SolveAll()
