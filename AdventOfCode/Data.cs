@@ -1,4 +1,6 @@
 ﻿using Interfaces;
+using LeaderboardLib;
+using LeaderboardLib.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -16,6 +18,7 @@ namespace AdventOfCode
 
     public List<DataItemView> Results { get; set; } = new List<DataItemView>();
 
+    
 
     public Data()
     {
@@ -44,6 +47,8 @@ namespace AdventOfCode
       {
         Console.WriteLine(compositionException.ToString());
       }
+
+      //Event ev = Leaderboard.LoadEvent("", "");
     }
   }
 }

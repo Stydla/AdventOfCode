@@ -160,6 +160,10 @@
       <Project>{8e871211-7987-4960-81c6-25538dfdca91}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LeaderboardLib\LeaderboardLib.csproj">
+      <Project>{283981D9-3B81-4C0D-BBED-F012C6CE97BF}</Project>
+      <Name>LeaderboardLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="stats\" />
