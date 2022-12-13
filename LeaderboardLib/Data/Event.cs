@@ -25,7 +25,7 @@ namespace LeaderboardLib.Data
         Member tmp = new Member(member.Value);
         Members.Add(tmp);
       } 
-      Members.Sort((x,y) => (int)x.StarCount - (int)y.StarCount);
+      Members.Sort((x,y) => -(int)x.LocalScore + (int)y.LocalScore);
     }
 
     public override string ToString()
@@ -33,6 +33,10 @@ namespace LeaderboardLib.Data
       return EventName;
     }
 
+    public PlainData GetPlainData()
+    {
+      return new PlainData(this);
+    }
 
   }
 }

@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PlainData\Character.cs" />
     <Compile Include="Data\Day.cs" />
     <Compile Include="Data\Event.cs" />
     <Compile Include="Data\Member.cs" />
+    <Compile Include="Data\PlainData\CharacterType.cs" />
+    <Compile Include="Data\PlainData\PlainData.cs" />
     <Compile Include="Data\Star.cs" />
     <Compile Include="Leaderboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
