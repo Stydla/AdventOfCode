@@ -112,7 +112,7 @@
       </ListView.ItemContainerStyle>
 
     </ListView>
-
+    <!--<local:LeaderboardControl DataContext="{Binding Event}"/>-->
     <Button Grid.Row="1" Content="Solve everything" FontSize="24" Click="Button_Click"></Button>
   </Grid>
 </Window>

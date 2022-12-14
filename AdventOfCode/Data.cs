@@ -18,7 +18,7 @@ namespace AdventOfCode
 
     public List<DataItemView> Results { get; set; } = new List<DataItemView>();
 
-    
+    public Event Event { get; set; }
 
     public Data()
     {
@@ -48,7 +48,7 @@ namespace AdventOfCode
         Console.WriteLine(compositionException.ToString());
       }
 
-      //Event ev = Leaderboard.LoadEvent("", "");
+      Event = Leaderboard.LoadEvent("", "");
       //PlainData pd = ev.GetPlainData();
     }
   }
