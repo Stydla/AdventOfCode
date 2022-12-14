@@ -139,11 +139,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="session.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="AdventSolver.zip" />
+    <Content Include="Fonts\SourceCodePro-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ProjectTemplates\AdventSolver2015.zip" />
     <None Include="ProjectTemplates\AdventSolver2016.zip" />
     <None Include="ProjectTemplates\AdventSolver2017.zip" />

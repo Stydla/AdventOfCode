@@ -7,6 +7,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -48,8 +49,14 @@ namespace AdventOfCode
         Console.WriteLine(compositionException.ToString());
       }
 
-      Event = Leaderboard.LoadEvent("", "");
-      //PlainData pd = ev.GetPlainData();
+
+      Match m = Regex.Match(path, ".*\\\\AdventOfCode_(\\d*)\\\\.*");
+      string year = m.Groups[1].Value;
+      string session = File.ReadAllText("session.txt");
+      if(!string.IsNullOrEmpty(session))
+      {
+        Event = Leaderboard.LoadEvent(year, session);
+      }
     }
   }
 }
