@@ -140,11 +140,15 @@ namespace AdventOfCode
           case ERunningState.Running:
             return Brushes.Yellow;
           case ERunningState.Finished:
-            return Brushes.Green;
+            return Brushes.LightGreen;
           case ERunningState.Exception:
-            return Brushes.Red;
+            return Brushes.OrangeRed;
           case ERunningState.NotImplemented:
             return Brushes.Cyan;
+          case ERunningState.Incorrect:
+            return Brushes.PaleVioletRed;
+          case ERunningState.NoTestData:
+            return Brushes.Transparent;
         }
         return Brushes.Gray;
       }
@@ -157,6 +161,8 @@ namespace AdventOfCode
     Running,
     Finished,
     Exception,
-    NotImplemented
+    NotImplemented,
+    Incorrect,
+    NoTestData
   }
 }
