@@ -40,7 +40,7 @@
               </GridViewColumn.Header>
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
-                  <TextBox Text="{Binding ResultTest1.Value}"></TextBox>
+                  <TextBox Text="{Binding ResultTest1.Value}" Background="{Binding ResultTest1.RunningColor}" FontFamily="Courier New" ></TextBox>
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
@@ -50,7 +50,7 @@
               </GridViewColumn.Header>
               <GridViewColumn.CellTemplate>
                 <DataTemplate>
-                  <TextBox Text="{Binding ResultTest2.Value}"></TextBox>
+                  <TextBox Text="{Binding ResultTest2.Value}" Background="{Binding ResultTest2.RunningColor}" FontFamily="Courier New" ></TextBox>
                 </DataTemplate>
               </GridViewColumn.CellTemplate>
             </GridViewColumn>
