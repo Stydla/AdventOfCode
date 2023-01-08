@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Enums\Direction4.cs" />
     <Compile Include="Enums\Direction8.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
