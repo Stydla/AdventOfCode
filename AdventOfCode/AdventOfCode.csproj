@@ -160,6 +160,7 @@
     <None Include="ProjectTemplates\CopyTemplates_VS2017.bat" />
     <None Include="ProjectTemplates\CopyTemplates_VS2019.bat" />
     <None Include="ProjectTemplates\CopyTemplates_VS2020.bat" />
+    <None Include="ProjectTemplates\CopyTemplates_VS2022.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
