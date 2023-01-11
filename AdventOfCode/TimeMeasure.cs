@@ -43,14 +43,17 @@ namespace AdventOfCode
 
     private void T_Elapsed(object sender, ElapsedEventArgs e)
     {
-      dispatcher.Invoke(() =>
+      try
       {
-        foreach (var item in ResultViewList)
+        dispatcher.Invoke(() =>
         {
-          item.Key.Time = $"{(sw.ElapsedMilliseconds - item.Value) / 1000.0}s";
-          //item.Key.Time = $"{sw.ElapsedTicks}s";
-        }
-      });
+          foreach (var item in ResultViewList)
+          {
+            item.Key.Time = $"{(sw.ElapsedMilliseconds - item.Value) / 1000.0}s";
+            //item.Key.Time = $"{sw.ElapsedTicks}s";
+          }
+        });
+      } catch { }
     }
 
     public void Stop()
