@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BFS\BFS.cs" />
+    <Compile Include="BFS\IBFSNode.cs" />
     <Compile Include="Enums\Direction4.cs" />
     <Compile Include="Enums\Direction8.cs" />
     <Compile Include="Extensions.cs" />

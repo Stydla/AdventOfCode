@@ -44,6 +44,72 @@ namespace AoCLib
       return X * 65536 + Y;
     }
 
+    public static int GetCustomHashCode(int x, int y)
+    {
+      return x * 65536 + y;
+    }
+
+    public static int GetCustomHashCode(Point2D point)
+    {
+      return GetCustomHashCode(point.X, point.Y);
+    }
+
+    public Point2D L()
+    {
+      return new Point2D(X - 1, Y);
+    }
+
+    public Point2D R()
+    {
+      return new Point2D(X + 1, Y);
+    }
+
+    public Point2D U()
+    {
+      return new Point2D(X, Y - 1);
+    }
+
+    public Point2D D()
+    {
+      return new Point2D(X, Y + 1);
+    }
+
+    public Point2D UR()
+    {
+      return new Point2D(X + 1, Y - 1);
+    }
+
+    public Point2D UL()
+    {
+      return new Point2D(X - 1, Y - 1);
+    }
+
+    public Point2D DR()
+    {
+      return new Point2D(X + 1, Y + 1);
+    }
+
+    public Point2D DL()
+    {
+      return new Point2D(X - 1, Y + 1);
+    }
+
+    public List<Point2D> GetNeightbours4()
+    {
+      return new List<Point2D>
+      {
+        U(), R(), D(), L()
+      };
+    }
+
+    public List<Point2D> GetNeightbours8()
+    {
+      return new List<Point2D>
+      {
+        U(), UR(), R(), DR(), D(), DL(), L(), UL()
+      };
+    }
+
 
 
   }
