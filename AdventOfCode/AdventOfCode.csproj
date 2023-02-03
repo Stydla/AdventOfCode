@@ -157,6 +157,10 @@
     <None Include="ProjectTemplates\AdventSolver2019.zip" />
     <None Include="ProjectTemplates\AdventSolver2020.zip" />
     <None Include="ProjectTemplates\AdventSolver2021.zip" />
+    <None Include="ProjectTemplates\AdventSolver2022.zip" />
+    <None Include="ProjectTemplates\AdventSolver2023.zip" />
+    <None Include="ProjectTemplates\AdventSolver2024.zip" />
+    <None Include="ProjectTemplates\AdventSolver2025.zip" />
     <None Include="ProjectTemplates\CopyTemplates_VS2017.bat" />
     <None Include="ProjectTemplates\CopyTemplates_VS2019.bat" />
     <None Include="ProjectTemplates\CopyTemplates_VS2020.bat" />
