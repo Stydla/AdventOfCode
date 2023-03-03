@@ -51,6 +51,7 @@
     <Compile Include="IntervalUtils.cs" />
     <Compile Include="MD5Creator.cs" />
     <Compile Include="Point2D.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

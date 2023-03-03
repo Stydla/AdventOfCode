@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AoCLib.BFS
 {
@@ -23,6 +24,32 @@ namespace AoCLib.BFS
     public int GetDistance(IBFSNode<T> target)
     {
       return Distances[target];
+    }
+
+    public IEnumerable<IBFSNode<T>> GetPath(IBFSNode<T> target)
+    {
+      List<IBFSNode<T>> path = new List<IBFSNode<T>>();
+      IBFSNode<T> current = target;
+      while (current != From) 
+      {
+        path.Add(current);
+
+        int bestDist = int.MaxValue;
+        foreach (IBFSNode<T> neighbour in current.GetNeighbours(Context))
+        {
+          if (Distances.ContainsKey(neighbour))
+          {
+            int distTmp = Distances[neighbour];
+            if(bestDist > distTmp)
+            {
+              current = neighbour;
+              bestDist = distTmp;
+            }
+          }
+        }
+      }
+      path.Add(From);
+      return path.Reverse<IBFSNode<T>>();
     }
 
     public bool IsReachableClosed(IBFSNode<T> target)
