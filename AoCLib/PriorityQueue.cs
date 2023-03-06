@@ -31,26 +31,25 @@ namespace AoCLib
     {
       if (IsEmpty())
       {
-        throw new Exception("Queue is Empty");
+        throw new InvalidOperationException("Queue is Empty");
       }
-      else
+      
+      foreach (Queue<T> q in Data.Values)
       {
-        foreach (Queue<T> q in Data.Values)
+        
+        if (q.Count > 0)
         {
-          
-          if (q.Count > 0)
+          TotalCount--;
+          T tmp = q.Dequeue();
+          if(q.Count == 0)
           {
-            TotalCount--;
-            T tmp = q.Dequeue();
-            if(q.Count== 0)
-            {
-              Data.Remove(tmp);
-            }
-            return tmp;
+            Data.Remove(tmp);
           }
+          return tmp;
         }
       }
-      return default(T);
+
+      throw new Exception($"Non empty queue was empty! TotalCount:{TotalCount}.");
     }
 
 
@@ -58,7 +57,7 @@ namespace AoCLib
     {
       if (IsEmpty())
       {
-        throw new Exception("Queue is Emptyg");
+        throw new Exception("Queue is Empty");
       }
       else
       {
