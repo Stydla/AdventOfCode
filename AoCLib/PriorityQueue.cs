@@ -57,7 +57,7 @@ namespace AoCLib
     {
       if (IsEmpty())
       {
-        throw new Exception("Queue is Emptyg");
+        throw new Exception("Queue is Empty");
       }
       else
       {
