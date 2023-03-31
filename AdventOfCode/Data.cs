@@ -8,6 +8,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace AdventOfCode
 {
@@ -55,8 +56,38 @@ namespace AdventOfCode
       string session = File.ReadAllText("session.txt");
       if(!string.IsNullOrEmpty(session))
       {
-        Event = Leaderboard.LoadEvent(year, session);
+        try
+        {
+          Event = Leaderboard.LoadEvent(year, session);
+        }
+        catch
+        {
+          var dialog = new MyDialog();
+          //dialog.Width = 500;
+          //dialog.Height = 100;
+          if (dialog.ShowDialog() == true)
+          {
+            string result = dialog.ResponseText;
+            if(!result.StartsWith("session="))
+            {
+              result = "session=" + result;
+            }
+            File.WriteAllText("session.txt", result);
+          }
+          try
+          {
+            session = File.ReadAllText("session.txt");
+            Event = Leaderboard.LoadEvent(year, session);
+          }
+          catch (Exception)
+          {
+          }
+
+        }
+        
       }
     }
   }
+
+  
 }

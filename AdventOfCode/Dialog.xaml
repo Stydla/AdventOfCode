@@ -1,0 +1,13 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AdventOfCode.MyDialog"
+        WindowStartupLocation="CenterScreen"
+        Width="Auto"
+        Height="Auto"
+        SizeToContent="WidthAndHeight">
+  <StackPanel Margin="3">
+    <TextBlock Margin="3" Text="Insert session: AdventOfCode web -> log in -> F12 -> Application -> session -> value" />
+    <TextBox Margin="3" x:Name="ResponseTextBox" />
+    <Button Margin="3" Content="OK" Click="OKButton_Click" />
+  </StackPanel>
+</Window>

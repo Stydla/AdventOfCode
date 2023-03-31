@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:AdventOfCode"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" DataContextChanged="UserControl_DataContextChanged">
-  
-    <Grid>
+
+  <Grid>
 
     <RichTextBox x:Name="rtb" FontFamily="Fonts/#Source Code Pro" FontSize="16" Background="#FF0F0F23" >
       
