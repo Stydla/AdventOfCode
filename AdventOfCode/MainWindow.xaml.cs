@@ -47,7 +47,7 @@ namespace AdventOfCode
           StartTests1(adventSolver, d, tm);
           StartTests2(adventSolver, d, tm);
         }
-      });
+      }, TaskCreationOptions.LongRunning);
     }
 
     private void SolveTask1(IAdventSolver adventSolver, Data d, TimeMeasure tm)
@@ -67,7 +67,7 @@ namespace AdventOfCode
             result.Result1.RunningState = ERunningState.Exception;
           }
         }
-      });
+      }, TaskCreationOptions.LongRunning);
     }
 
     private void SolveTask2(IAdventSolver adventSolver, Data d, TimeMeasure tm)
@@ -87,7 +87,7 @@ namespace AdventOfCode
             result.Result2.RunningState = ERunningState.Exception;
           }
         }
-      });
+      }, TaskCreationOptions.LongRunning);
     }
 
     private void StartTests1(IAdventSolver adventSolver, Data d, TimeMeasure tm)
@@ -132,7 +132,7 @@ namespace AdventOfCode
           tm.Unregister(result.ResultTest1);
         }
         tm.TaskFinished();
-      });
+      }, TaskCreationOptions.LongRunning);
     }
 
     private void StartTests2(IAdventSolver adventSolver, Data d, TimeMeasure tm)
@@ -177,7 +177,7 @@ namespace AdventOfCode
           tm.Unregister(result.ResultTest2);
         }
         tm.TaskFinished();
-      });
+      }, TaskCreationOptions.LongRunning);
     }
 
     private void StartSolver(Func<string, string> task, string inputData, ResultView rv, TimeMeasure tm)
