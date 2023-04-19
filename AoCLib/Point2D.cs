@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AoCLib.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -92,6 +93,22 @@ namespace AoCLib
     public Point2D DL()
     {
       return new Point2D(X - 1, Y + 1);
+    }
+
+    public Point2D Move(EDirection4 dir)
+    {
+      switch (dir)
+      {
+        case EDirection4.UP:
+          return U();
+        case EDirection4.RIGHT:
+          return R();
+        case EDirection4.DOWN:
+          return D();
+        case EDirection4.LEFT:
+          return L();
+      }
+      throw new Exception($"Missin direction {dir}");
     }
 
     public List<Point2D> GetNeightbours4()
