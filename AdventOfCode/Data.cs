@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -85,7 +86,29 @@ namespace AdventOfCode
 
         }
         
-      }
+      } else
+            {
+                var dialog = new MyDialog();
+                //dialog.Width = 500;
+                //dialog.Height = 100;
+                if (dialog.ShowDialog() == true)
+                {
+                    string result = dialog.ResponseText;
+                    if (!result.StartsWith("session="))
+                    {
+                        result = "session=" + result;
+                    }
+                    File.WriteAllText("session.txt", result);
+                }
+                try
+                {
+                    session = File.ReadAllText("session.txt");
+                    Event = Leaderboard.LoadEvent(year, session);
+                }
+                catch (Exception)
+                {
+                }
+            }
     }
   }
 
