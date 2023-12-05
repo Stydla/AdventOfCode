@@ -50,5 +50,71 @@ namespace AoCLib
     {
       return $"[{Points[0].Value},{Points[1].Value}]";
     }
+
+    public bool Overlapping(Interval intr)
+    {
+      if (StartPoint.Value >= intr.StartPoint.Value && StartPoint.Value <= intr.EndPoint.Value) return true;
+      if (EndPoint.Value >= intr.StartPoint.Value && EndPoint.Value <= intr.EndPoint.Value) return true;
+
+      if (StartPoint.Value < intr.StartPoint.Value && EndPoint.Value >= intr.StartPoint.Value) return true;
+      if (EndPoint.Value > intr.EndPoint.Value && StartPoint.Value <= intr.EndPoint.Value) return true;
+
+      return false;
+       
+    }
+
+    public long GetMinOverlap(Interval intr)
+    {
+      if(intr.Contains(StartPoint.Value))
+      {
+        return StartPoint.Value;
+      } else
+      {
+        return intr.StartPoint.Value;
+      }
+      
+    }
+
+    public Interval Intersect(Interval other)
+    {
+      if (!Overlapping(other)) return null;
+
+      if(other.Contains(StartPoint.Value))
+      {
+        if(other.Contains(EndPoint.Value))
+        {
+          return new Interval(StartPoint.Value, EndPoint.Value);
+        } else
+        {
+          return new Interval(StartPoint.Value, other.EndPoint.Value);
+        }
+      } else
+      {
+        if (other.Contains(EndPoint.Value))
+        {
+          return new Interval(other.StartPoint.Value, EndPoint.Value);
+        }
+        else
+        {
+          return new Interval(other.StartPoint.Value, other.EndPoint.Value);
+        }
+      }
+
+
+      //if(StartPoint.Value < other.StartPoint.Value)
+      //{
+      //  if(EndPoint.Value >= other.StartPoint.Value && EndPoint.Value <= other.EndPoint.Value)
+      //  {
+      //    return new Interval(other.StartPoint.Value, )
+      //  }
+
+      //}
+
+      //if (StartPoint.Value >= other.StartPoint.Value && StartPoint.Value <= other.EndPoint.Value)
+      //{
+      //  return new Interval(StartPoint.Value, Math.Min(EndPoint.Value, other.EndPoint.Value));
+      //}
+
+    }
   }
 }
