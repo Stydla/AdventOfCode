@@ -50,6 +50,7 @@
     <Compile Include="IntervalPoint.cs" />
     <Compile Include="IntervalUtils.cs" />
     <Compile Include="MD5Creator.cs" />
+    <Compile Include="ModuloMath.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
