@@ -127,6 +127,11 @@ namespace AoCLib
       };
     }
 
+    public long ManhattanDistance(Point2D other)
+    {
+      return Math.Abs(X - other.X) + Math.Abs(Y - other.Y);
+    }
+
 
 
   }
