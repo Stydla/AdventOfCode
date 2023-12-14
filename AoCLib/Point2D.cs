@@ -95,6 +95,27 @@ namespace AoCLib
       return new Point2D(X - 1, Y + 1);
     }
 
+
+    public Point2D L(int cnt)
+    {
+      return new Point2D(X - cnt, Y);
+    }
+
+    public Point2D R(int cnt)
+    {
+      return new Point2D(X + cnt, Y);
+    }
+
+    public Point2D U(int cnt)
+    {
+      return new Point2D(X, Y - cnt);
+    }
+
+    public Point2D D(int cnt)
+    {
+      return new Point2D(X, Y + cnt);
+    }
+
     public Point2D Move(EDirection4 dir)
     {
       switch (dir)
@@ -132,8 +153,21 @@ namespace AoCLib
       return Math.Abs(X - other.X) + Math.Abs(Y - other.Y);
     }
 
-
-
+    public Point2D Move(EDirection4 dir, int cnt)
+    {
+      switch (dir)
+      {
+        case EDirection4.UP:
+          return U(cnt);
+        case EDirection4.RIGHT:
+          return R(cnt);
+        case EDirection4.DOWN:
+          return D(cnt);
+        case EDirection4.LEFT:
+          return L(cnt);
+      }
+      throw new Exception($"Missin direction {dir}");
+    }
   }
 
 }
