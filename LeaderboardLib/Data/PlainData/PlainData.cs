@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace LeaderboardLib.Data
 {
@@ -26,13 +28,13 @@ namespace LeaderboardLib.Data
       int colScoreWidth = ev.Members.Max(x=>x.StarCount).ToString().Length;
       int colStarsWidth = 25;
       int colNameWidth = ev.Members.Max(x=>x.Name.Length);
-      int colMaxScoreWidth = 10;
+      int colMaxScoreWidth = 5;
 
       int maxX = colIndexWidth + colScoreWidth + colStarsWidth + colNameWidth + 3 * colSpace + colMaxScoreWidth;
       int maxY = ev.Members.Count + 2;
 
       InitGrid(maxX, maxY);
-      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace);
+      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace, colIndexWidth + colSpace + colScoreWidth + colSpace + colStarsWidth + colSpace + colNameWidth);
 
       for(int i = 0; i < ev.Members.Count; i++)
       {
@@ -68,7 +70,7 @@ namespace LeaderboardLib.Data
         ch.Type = ECharacterType.MemberName;
       }
 
-      val = String.Format($"  Max({{0, {3}}})", m.MaxPossibleScore);
+      val = String.Format($"{{0, {colMaxScoreWidth}}}", m.MaxPossibleScore);
       for (int i = 0; i < val.Length; i++)
       {
         Character ch = Grid[index + 2][colIndexWidth + colSpace + colScoreWidth + colSpace + colStarsWidth + colSpace + i + colNameWidth];
@@ -107,7 +109,7 @@ namespace LeaderboardLib.Data
 
     }
 
-    private void WriteColumnHeader(int offset)
+    private void WriteColumnHeader(int offset, int maxTextIndex)
     {
       for (int i = 1; i <= 25; i++)
       {
@@ -120,6 +122,14 @@ namespace LeaderboardLib.Data
         }
         Grid[1][index].Value = (char)('0' + val);
         Grid[1][index].Type = ECharacterType.ColumnHeader;
+      }
+
+      string valStr = "  Max";
+      for (int i = 0; i < valStr.Length; i++)
+      {
+        Character ch = Grid[1][maxTextIndex + i];
+        ch.Value = valStr[i];
+        ch.Type = ECharacterType.ColumnHeader;
       }
     }
 
