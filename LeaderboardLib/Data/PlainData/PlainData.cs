@@ -26,8 +26,9 @@ namespace LeaderboardLib.Data
       int colScoreWidth = ev.Members.Max(x=>x.StarCount).ToString().Length;
       int colStarsWidth = 25;
       int colNameWidth = ev.Members.Max(x=>x.Name.Length);
+      int colMaxScoreWidth = 10;
 
-      int maxX = colIndexWidth + colScoreWidth + colStarsWidth + colNameWidth + 3 * colSpace;
+      int maxX = colIndexWidth + colScoreWidth + colStarsWidth + colNameWidth + 3 * colSpace + colMaxScoreWidth;
       int maxY = ev.Members.Count + 2;
 
       InitGrid(maxX, maxY);
@@ -36,13 +37,13 @@ namespace LeaderboardLib.Data
       for(int i = 0; i < ev.Members.Count; i++)
       {
         Member m = ev.Members[i];
-        WriteMember(m, i, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth);
+        WriteMember(m, i, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth, colMaxScoreWidth);
       }
 
       Console.WriteLine(Print());
     }
 
-    private void WriteMember(Member m, int index, int colSpace, int colIndexWidth, int colScoreWidth, int colStarsWidth, int colNameWidth)
+    private void WriteMember(Member m, int index, int colSpace, int colIndexWidth, int colScoreWidth, int colStarsWidth, int colNameWidth, int colMaxScoreWidth)
     {
       string val = String.Format($"{{0, {colIndexWidth - 1}}})", index + 1);
       for(int i = 0; i < val.Length; i++)
@@ -67,7 +68,15 @@ namespace LeaderboardLib.Data
         ch.Type = ECharacterType.MemberName;
       }
 
-      for(int i = 0; i < 25; i++)
+      val = String.Format($"  Max({{0, {3}}})", m.MaxPossibleScore);
+      for (int i = 0; i < val.Length; i++)
+      {
+        Character ch = Grid[index + 2][colIndexWidth + colSpace + colScoreWidth + colSpace + colStarsWidth + colSpace + i + colNameWidth];
+        ch.Value = val[i];
+        ch.Type = ECharacterType.RowHeader;
+      }
+
+      for (int i = 0; i < 25; i++)
       {
         int colIndex = i + colIndexWidth + colSpace + colScoreWidth + colSpace;
         Character ch = Grid[index + 2][colIndex];
@@ -92,6 +101,9 @@ namespace LeaderboardLib.Data
             break;
         }
       }
+
+
+
 
     }
 

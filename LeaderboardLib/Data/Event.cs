@@ -26,6 +26,11 @@ namespace LeaderboardLib.Data
         Members.Add(tmp);
       } 
       Members.Sort((x,y) => -(int)x.LocalScore + (int)y.LocalScore);
+
+      foreach(Member member in Members)
+      {
+        member.ComputeMaxPossibleScore(Members);
+      }
     }
 
     public override string ToString()
