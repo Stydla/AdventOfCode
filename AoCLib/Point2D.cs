@@ -1,6 +1,7 @@
 ﻿using AoCLib.Enums;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -137,6 +138,17 @@ namespace AoCLib
       return new List<Point2D>
       {
         U(), R(), D(), L()
+      };
+    }
+
+    public Dictionary<EDirection4 ,Point2D> GetNeightboursDict4()
+    {
+      return new Dictionary<EDirection4, Point2D>
+      {
+        {EDirection4.UP, U()},
+        {EDirection4.RIGHT, R()},
+        {EDirection4.DOWN, D()},
+        {EDirection4.LEFT, L()},
       };
     }
 
