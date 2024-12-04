@@ -133,6 +133,31 @@ namespace AoCLib
       throw new Exception($"Missin direction {dir}");
     }
 
+    public Point2D Move(EDirection8 dir)
+    {
+      switch (dir)
+      {
+        case EDirection8.UP:
+          return U();
+        case EDirection8.UP_RIGHT:
+          return UR();
+        case EDirection8.RIGHT:
+          return R();
+        case EDirection8.DOWN_RIGHT:
+          return DR();
+        case EDirection8.DOWN:
+          return D();
+        case EDirection8.DOWN_LEFT:
+          return DL();
+        case EDirection8.LEFT:
+          return L();
+        case EDirection8.UP_LEFT:
+          return UL();
+
+      }
+      throw new Exception($"Missin direction {dir}");
+    }
+
     public List<Point2D> GetNeightbours4()
     {
       return new List<Point2D>
