@@ -18,10 +18,11 @@ namespace LeaderboardLib.Data
     {
       dynamic stuff = JsonConvert.DeserializeObject(input);
 
-      Id = stuff.owner_id;
-      EventName = stuff["event"];
-      foreach (var member in stuff.members)
+      //Id = (string)stuff.owner_id;
+      EventName = (string)stuff["event"];
+      foreach (var member in stuff["members"])
       {
+        //dynamic val = member as dynamic;
         Member tmp = new Member(member.Value);
         Members.Add(tmp);
       } 

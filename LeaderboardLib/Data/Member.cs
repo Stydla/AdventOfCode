@@ -24,11 +24,11 @@ namespace LeaderboardLib.Data
 
     public Member(dynamic data)
     {
-      Id = data.id;
-      Name = data.name;
-      LocalScore = data.local_score.Value;
-      StarCount = data.stars.Value;
-      foreach(var day in data.completion_day_level) 
+      Id = (int)data["id"];
+      Name = (string)data["name"];
+      LocalScore = data["local_score"].Value;
+      StarCount = data["stars"].Value;
+      foreach(var day in data["completion_day_level"]) 
       {
         Day d = new Day(day);
         Days.Add(d);

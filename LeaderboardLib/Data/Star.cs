@@ -17,7 +17,7 @@ namespace LeaderboardLib.Data
     public Star(dynamic data)
     {
       Id = int.Parse(data.Name);
-      Timestamp = data.Value.get_star_ts;
+      Timestamp = (long)data.Value["get_star_ts"];
       Time = UnixTimeStampToDateTime(Timestamp);
     }
 
