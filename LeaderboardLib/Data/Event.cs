@@ -31,6 +31,7 @@ namespace LeaderboardLib.Data
       foreach(Member member in Members)
       {
         member.ComputeMaxPossibleScore(Members);
+        member.ComputeMinPossibleScore(Members);
       }
     }
 

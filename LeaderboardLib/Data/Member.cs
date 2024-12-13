@@ -16,6 +16,7 @@ namespace LeaderboardLib.Data
     public long StarCount { get; set; }
 
     public int MaxPossibleScore { get; private set; }
+    public int MinPossibleScore { get; private set; }
     public int LocalScoreComputed { get; private set; }
 
 
@@ -92,6 +93,12 @@ namespace LeaderboardLib.Data
       }
       MaxPossibleScore = scoreTmp;
       LocalScoreComputed = localScoreTmp;
+    }
+
+    public void ComputeMinPossibleScore(List<Member> members)
+    {
+      MinPossibleScore = LocalScoreComputed + (50 - (int)StarCount);
+
     }
 
     public override string ToString()
