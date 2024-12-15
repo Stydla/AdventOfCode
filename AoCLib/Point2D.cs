@@ -205,6 +205,22 @@ namespace AoCLib
       }
       throw new Exception($"Missin direction {dir}");
     }
+
+    public static bool operator ==(Point2D a, Point2D b)
+    {
+      if (ReferenceEquals(a, b))
+        return true;
+      if (ReferenceEquals(a, null))
+        return false;
+      if (ReferenceEquals(b, null))
+        return false;
+      return a.Equals(b);
+    }
+
+    public static bool operator !=(Point2D a, Point2D b)
+    {
+      return !(a == b);
+    }
   }
 
 }
