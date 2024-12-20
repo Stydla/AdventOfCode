@@ -185,6 +185,29 @@ namespace AoCLib
       };
     }
 
+    public HashSet<Point2D> GetNeighboursAtDistance(int distance)
+    {
+      HashSet<Point2D> points = new HashSet<Point2D>();
+      for(int i = -distance; i <= distance; i++)
+      {
+        int x = X + i;
+        int y1 = Y + (distance - Math.Abs(i));
+        Point2D p1 = new Point2D(x, y1);
+        if (!points.Contains(p1)) 
+        { 
+          points.Add(p1);
+        }
+
+        int y2 = Y + (-distance + Math.Abs(i));
+        Point2D p2 = new Point2D(x, y2);
+        if (!points.Contains(p2))
+        {
+          points.Add(p2);
+        }
+      }
+      return points;
+    }
+
     public long ManhattanDistance(Point2D other)
     {
       return Math.Abs(X - other.X) + Math.Abs(Y - other.Y);
