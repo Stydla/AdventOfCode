@@ -16,6 +16,23 @@ namespace AoCLib.Enums
 
   public static class EDirection4Helper
   {
+
+    public static string Str(EDirection4 direction)
+    {
+      switch(direction)
+      {
+        case EDirection4.UP:
+          return "^";
+        case EDirection4.RIGHT:
+          return ">";
+        case EDirection4.DOWN:
+          return "v";
+        case EDirection4.LEFT:
+          return "<";
+      }
+      throw new Exception($"Invalid EDirection4 value: {direction}");
+    }
+
     public static EDirection4 Parse(char value)
     {
       switch (value)
