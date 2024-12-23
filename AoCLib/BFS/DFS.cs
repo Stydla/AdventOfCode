@@ -23,7 +23,7 @@ namespace AoCLib.BFS
     public List<List<IBFSNode<T>>> GetAllPaths(IBFSNode<T> target)
     {
 
-      List<IBFSNode<T>> visited = new List<IBFSNode<T>>();
+      List<IBFSNode<T>> visited = new List<IBFSNode<T>>() { };
       List<List<IBFSNode<T>>> results = new List<List<IBFSNode<T>>>();
       Solve(From, target, visited, results);
 
@@ -32,6 +32,10 @@ namespace AoCLib.BFS
 
     private void Solve(IBFSNode<T> current, IBFSNode<T> target, List<IBFSNode<T>> visited, List<List<IBFSNode<T>>> results)
     {
+      if (visited.Contains(current))
+      {
+        return;
+      }
       visited.Add(current);
 
       if (current == target)
