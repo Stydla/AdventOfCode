@@ -21,7 +21,7 @@ namespace LeaderboardLib.Data
       /*
 1) 176 *************************  Ondřej Brožek
       */
-
+      
 
       int colSpace = 1;
       int colIndexWidth = ev.Members.Count.ToString().Length + 1;
@@ -32,17 +32,17 @@ namespace LeaderboardLib.Data
       int colMinScoreWidth = 5;
 
       int maxX = colIndexWidth + colScoreWidth + colStarsWidth + colNameWidth + 3 * colSpace + colMaxScoreWidth + 3 * colSpace + colMinScoreWidth;
-      int maxY = ev.Members.Count + 2;
+      int maxY = ev.Members.Count + 3;
 
       InitGrid(maxX, maxY);
       int maxTextIndex = colIndexWidth + colSpace + colScoreWidth + colSpace + colStarsWidth + colSpace + colNameWidth;
       int minTextIndex = maxTextIndex + colMaxScoreWidth;
-      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace, maxTextIndex, minTextIndex);
+      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace, maxTextIndex, minTextIndex, $"Event: {ev.EventName}");
 
       for(int i = 0; i < ev.Members.Count; i++)
       {
         Member m = ev.Members[i];
-        WriteMember(m, i, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth, colMaxScoreWidth, colMinScoreWidth);
+        WriteMember(m, i+1, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth, colMaxScoreWidth, colMinScoreWidth);
       }
 
       Console.WriteLine(Print());
@@ -119,19 +119,25 @@ namespace LeaderboardLib.Data
 
     }
 
-    private void WriteColumnHeader(int offset, int maxTextIndex, int minTextIndex)
+    private void WriteColumnHeader(int offset, int maxTextIndex, int minTextIndex, string eventName)
     {
+      for(int i = 0; i < eventName.Length; i++)
+      {
+        Grid[0][i].Value = eventName[i];
+        Grid[0][i].Type = ECharacterType.ColumnHeader;
+      }
+
       for (int i = 1; i <= 25; i++)
       {
         int index = i + offset - 1;
         int val = i % 10;
         if (i / 10 > 0)
         {
-          Grid[0][index].Value = (char)('0' + i / 10);
-          Grid[0][index].Type = ECharacterType.ColumnHeader;
+          Grid[1][index].Value = (char)('0' + i / 10);
+          Grid[1][index].Type = ECharacterType.ColumnHeader;
         }
-        Grid[1][index].Value = (char)('0' + val);
-        Grid[1][index].Type = ECharacterType.ColumnHeader;
+        Grid[2][index].Value = (char)('0' + val);
+        Grid[2][index].Type = ECharacterType.ColumnHeader;
       }
 
       string valStr = "  Max";

@@ -105,11 +105,19 @@
     <Compile Include="Dialog.xaml.cs">
       <DependentUpon>Dialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LeaderboardAll.xaml.cs">
+      <DependentUpon>LeaderboardAll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LeaderboardAllData.cs" />
     <Compile Include="LeaderboardControl.xaml.cs">
       <DependentUpon>LeaderboardControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeMeasure.cs" />
     <Page Include="Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LeaderboardAll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

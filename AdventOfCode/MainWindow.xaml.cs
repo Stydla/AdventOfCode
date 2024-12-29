@@ -216,6 +216,12 @@ namespace AdventOfCode
       SolveAll();
     }
 
+    private void Button_Click_All(object sender, RoutedEventArgs e)
+    {
+      LeaderboardAll lb = new LeaderboardAll();
+      lb.Show();
+    }
+
     private void Button_Click_1(object sender, RoutedEventArgs e)
     {
       DataItemView div = (sender as Button).DataContext as DataItemView;
