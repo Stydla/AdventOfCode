@@ -37,11 +37,11 @@ namespace LeaderboardLib.Data
       Days.Sort((x,y)=> x.DayNumber.CompareTo(y.DayNumber));
     }
 
-    public void ComputeMaxPossibleScore(List<Member> members)
+    public void ComputeMaxPossibleScore(List<Member> members, Event ev)
     {
       int scoreTmp = 0;
       int localScoreTmp = 0;
-      for(int i = 1; i <= 25; i++)
+      for(int i = 1; i <= ev.TaskCount; i++)
       {
         int maxForFirst = members.Count;
         int maxForSecond = members.Count;
@@ -95,9 +95,9 @@ namespace LeaderboardLib.Data
       LocalScoreComputed = localScoreTmp;
     }
 
-    public void ComputeMinPossibleScore(List<Member> members)
+    public void ComputeMinPossibleScore(List<Member> members, Event ev)
     {
-      MinPossibleScore = LocalScoreComputed + (50 - (int)StarCount);
+      MinPossibleScore = LocalScoreComputed + (ev.MaxStars - (int)StarCount);
 
     }
 

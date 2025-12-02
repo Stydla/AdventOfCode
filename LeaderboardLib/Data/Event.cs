@@ -13,6 +13,32 @@ namespace LeaderboardLib.Data
     public string Id { get; set; }
     public List<Member> Members { get; set; } = new List<Member>();
     public string EventName { get; set; }
+    public int EventNameInt
+    {
+      get
+      {
+        int year;
+        if (!int.TryParse(EventName, out year))
+        {
+          return 0;
+        };
+        return year;
+      }
+    }
+    public int MaxStars
+    {
+      get
+      {
+        return EventNameInt >= 2025 ? 24 : 50;
+      }
+    }
+    public int TaskCount
+    {
+      get
+      {
+        return EventNameInt >= 2025 ? 12 : 25;
+      }
+    }
 
     public Event(string input)
     {
@@ -30,8 +56,8 @@ namespace LeaderboardLib.Data
 
       foreach(Member member in Members)
       {
-        member.ComputeMaxPossibleScore(Members);
-        member.ComputeMinPossibleScore(Members);
+        member.ComputeMaxPossibleScore(Members, this);
+        member.ComputeMinPossibleScore(Members, this);
       }
     }
 

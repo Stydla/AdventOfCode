@@ -26,7 +26,7 @@ namespace LeaderboardLib.Data
       int colSpace = 1;
       int colIndexWidth = ev.Members.Count.ToString().Length + 1;
       int colScoreWidth = ev.Members.Max(x=>x.StarCount).ToString().Length;
-      int colStarsWidth = 25;
+      int colStarsWidth = ev.MaxStars / 2;
       int colNameWidth = ev.Members.Max(x=>x.Name.Length);
       int colMaxScoreWidth = 5;
       int colMinScoreWidth = 5;
@@ -37,20 +37,20 @@ namespace LeaderboardLib.Data
       InitGrid(maxX, maxY);
       int maxTextIndex = colIndexWidth + colSpace + colScoreWidth + colSpace + colStarsWidth + colSpace + colNameWidth;
       int minTextIndex = maxTextIndex + colMaxScoreWidth;
-      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace, maxTextIndex, minTextIndex, $"Event: {ev.EventName}");
+      WriteColumnHeader(colIndexWidth + colScoreWidth + 2*colSpace, maxTextIndex, minTextIndex, $"Event: {ev.EventName}", ev.MaxStars / 2);
 
       for(int i = 0; i < ev.Members.Count; i++)
       {
         Member m = ev.Members[i];
-        WriteMember(m, i+1, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth, colMaxScoreWidth, colMinScoreWidth);
+        WriteMember(m, i+1, colSpace, colIndexWidth, colScoreWidth, colStarsWidth, colNameWidth, colMaxScoreWidth, colMinScoreWidth, ev.MaxStars / 2);
       }
 
       Console.WriteLine(Print());
     }
 
-    private void WriteMember(Member m, int index, int colSpace, int colIndexWidth, int colScoreWidth, int colStarsWidth, int colNameWidth, int colMaxScoreWidth, int colMinScoreWidth)
+    private void WriteMember(Member m, int index, int colSpace, int colIndexWidth, int colScoreWidth, int colStarsWidth, int colNameWidth, int colMaxScoreWidth, int colMinScoreWidth, int maxStars)
     {
-      string val = String.Format($"{{0, {colIndexWidth - 1}}})", index + 1);
+      string val = String.Format($"{{0, {colIndexWidth - 1}}})", index);
       for(int i = 0; i < val.Length; i++)
       {
         Character ch = Grid[index + 2][i];
@@ -88,7 +88,7 @@ namespace LeaderboardLib.Data
         ch.Type = ECharacterType.RowHeader;
       }
 
-      for (int i = 0; i < 25; i++)
+      for (int i = 0; i < maxStars; i++)
       {
         int colIndex = i + colIndexWidth + colSpace + colScoreWidth + colSpace;
         Character ch = Grid[index + 2][colIndex];
@@ -119,7 +119,7 @@ namespace LeaderboardLib.Data
 
     }
 
-    private void WriteColumnHeader(int offset, int maxTextIndex, int minTextIndex, string eventName)
+    private void WriteColumnHeader(int offset, int maxTextIndex, int minTextIndex, string eventName, int maxStars)
     {
       for(int i = 0; i < eventName.Length; i++)
       {
@@ -127,7 +127,7 @@ namespace LeaderboardLib.Data
         Grid[0][i].Type = ECharacterType.ColumnHeader;
       }
 
-      for (int i = 1; i <= 25; i++)
+      for (int i = 1; i <= maxStars; i++)
       {
         int index = i + offset - 1;
         int val = i % 10;
