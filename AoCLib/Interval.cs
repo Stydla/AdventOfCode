@@ -32,9 +32,12 @@ namespace AoCLib
     }
 
 
-    internal long GetLength()
+    public long Length
     {
-      return Points[1].Value - Points[0].Value + 1;
+      get
+      {
+        return Points[1].Value - Points[0].Value + 1;
+      }
     }
 
     public bool Contains(long number)
