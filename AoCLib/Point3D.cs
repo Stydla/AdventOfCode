@@ -167,6 +167,9 @@ namespace AoCLib
       return new Point3D(X + x, Y + y, Z + z);
     }
 
-
-  }
+		public long Distance(Point3D location)
+		{
+			return (long)Math.Sqrt(Math.Pow(X - location.X, 2) + Math.Pow(Y - location.Y, 2) + Math.Pow(Z - location.Z, 2));
+		}
+	}
 }
