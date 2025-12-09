@@ -58,6 +58,7 @@
     <Compile Include="ModuloMath.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="Point3D.cs" />
+    <Compile Include="PointUtils.cs" />
     <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector.cs" />

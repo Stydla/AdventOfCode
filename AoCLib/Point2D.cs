@@ -15,6 +15,13 @@ namespace AoCLib
     public int X {get; set; }
     public int Y { get; set; }
 
+    public Point2D(string input)
+    {
+      string[] parts = input.Split(',');
+      X = int.Parse(parts[0]); 
+      Y = int.Parse(parts[1]);
+    }
+
     public Point2D(int x, int y)
     {
       X = x;
